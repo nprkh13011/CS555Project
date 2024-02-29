@@ -31,7 +31,7 @@ const Login = () => {
               onChange = {(e) => setPassword(e.target.value)}
               placeholder='Enter Password' />
           </div>
-          <button type="submit" className="btn btn-success w-50 rounded-10 ">Login</button>
+          <button type="submit" className="btn btn-secondary w-50 rounded-10 ">Login</button>
           
         </form>
       </div>
