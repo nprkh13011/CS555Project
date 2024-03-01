@@ -7,10 +7,10 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect("mongodb://127.0.0.1:27017/test")
+mongoose.connect("mongodb://127.0.0.1:27017/lie-detector")
 
-app.get('/getUsers', (req, res) => {
-    UserModel.find()
+app.post('/signup', async (req, res) => {
+    UserModel.create(req.body)
     .then(users => res.json(users))
     .catch(err => res.json(err))
 })
