@@ -1,5 +1,5 @@
 import React from 'react';
-import Signup from './components/Signup';
+import Signup from './components/SignUp';
 import Login from './components/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
