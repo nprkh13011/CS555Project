@@ -18,20 +18,22 @@ const Login = () => {
               name="email" 
               placeholder='Enter Email Address' 
               value = {email}
+              id="email"
               onChange = {(e) => setEmail(e.target.value)}
               autoComplete='off' />
           </div>
           <div className="mb-4">
-            <label htmlFor="email" style={{ textAlign: 'left', width: '100%', display: 'inline-block' }} className="form-label">Password</label>
+            <label htmlFor="password" style={{ textAlign: 'left', width: '100%', display: 'inline-block' }} className="form-label">Password</label>
             <input 
               type="password" 
               className="form-control rounded-0" 
               name="password" 
+              id="password"
               value = {password}
               onChange = {(e) => setPassword(e.target.value)}
               placeholder='Enter Password' />
           </div>
-          <button type="submit" className="btn btn-secondary w-50 rounded-10 ">Login</button>
+          <button type="submit" className="btn btn-secondary w-50 rounded-10 ">Submit</button>
           
         </form>
       </div>
