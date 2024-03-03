@@ -32,3 +32,19 @@ it("should allow the user to submit/sign in to the application", () => {
     // button should take in email and password
     expect(submit).toHaveBeenCalledWith({email: "testing@test.com", password: "testing123"});
 });
+
+it("should correctly take in login information once inputted", () => {
+    
+    render(<Login/>);
+
+    const email = screen.getByLabelText("Email");
+    const password = screen.getByLabelText("Password");
+
+    userEvent.type(email, "testing@test.com");
+    userEvent.type(password, "testing123");
+
+    expect(email).toHaveValue("testing@test.com");
+    expect(password).toHaveValue("testing123");
+
+
+});
