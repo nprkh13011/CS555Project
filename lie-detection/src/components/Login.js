@@ -1,15 +1,21 @@
 import React, {useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+// import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log('Logged in')
+  // }
+  
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="bg-white p-5 rounded border " style = {{width:'35%'}}>
         <h1 className="mb-4">Login</h1>
-        <form>
+        <form >
           <div className="mb-3">
             <label htmlFor="email" style={{ textAlign: 'left', width: '100%', display: 'inline-block' }} className="form-label">Email</label>
             <input 

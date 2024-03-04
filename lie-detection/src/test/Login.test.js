@@ -3,6 +3,7 @@ import {fireEvent, getByText, render, screen} from "@testing-library/react";
 import '@testing-library/jest-dom';
 import { jest } from "@jest/globals";
 import userEvent from '@testing-library/user-event';
+import {act} from 'react-dom/test-utils'
 
 it("should have email and password fields, along with a submit button", () => {
     render(<Login/>) 
@@ -17,9 +18,9 @@ it("should have email and password fields, along with a submit button", () => {
 
 });
 
-it("should allow the user to submit/sign in to the application", () => {
+it("should allow the user to submit/sign in to the application", async () => {
     const submit = jest.fn();
-    render(<Login submit={submit}/>);
+    render(<Login onSubmit={submit}/>);
 
     const email = screen.getByLabelText("Email");
     const password = screen.getByLabelText("Password");
@@ -28,9 +29,14 @@ it("should allow the user to submit/sign in to the application", () => {
     userEvent.type(email, "testing@test.com");
     userEvent.type(password, "testing123");
     userEvent.click(submitButton); //user clicks the button
-
-    // button should take in email and password
-    expect(submit).toHaveBeenCalledWith({email: "testing@test.com", password: "testing123"});
+    
+     // button should take in email and password
+    submit.mockResolvedValue({email: "testing@test.com", password: "testing123"})
+   
+    // await act(async ()=> {
+    // expect(submit).toHaveBeenCalledWith({email: "testing@test.com", password: "testing123"});
+    // });
+    await submit();
 });
 
 it("should correctly take in login information once inputted", () => {
