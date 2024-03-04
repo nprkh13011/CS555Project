@@ -15,6 +15,20 @@ app.post('/signup', async (req, res) => {
     .catch(err => res.json(err))
 })
 
+app.post('/check-email', async (req, res) => {
+    const { email } = req.body;
+    try {
+        const user = await UserModel.findOne({ email });
+        if (user) {
+            res.json({ exists: true });
+        } else {
+            res.json({ exists: false });
+        }
+    } catch (err) {
+        res.json(err);
+    }
+})
+
 app.listen(3001, () => {
     console.log("Server is running on http://localhost:3001")
 })

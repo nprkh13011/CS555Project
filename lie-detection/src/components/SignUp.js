@@ -8,15 +8,32 @@ const SignUp = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const navigate = useNavigate()
+  const [error, setError] = useState()
+  const [emailExists, setEmailExists] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios.post('http://localhost:3001/signup', { name, email, password })
-      .then(result => {
-        console.log(result)
-        navigate('/login')
+
+    if (!name || !email || !password) {
+      throw new Error('All fields are required')
+    }
+
+    axios.post('http://localhost:3001/check-email', { email })
+      .then(response => {
+        if (response.data.exists) {
+          setError('Email already exists');
+          setEmailExists(true);
+        } else {
+          // If email does not exist, proceed with signup
+          axios.post('http://localhost:3001/signup', { name, email, password })
+            .then(result => {
+              console.log(result);
+              navigate('/login');
+            })
+            .catch(err => console.log(err));
+        }
       })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err));
   }
 
   return (
@@ -35,6 +52,7 @@ const SignUp = () => {
               <strong>Email</strong>
             </label>
             <input type="text" className="form-control rounded-0" name="email" placeholder='Enter Email Address' autoComplete='off' onChange={(e) => setEmail(e.target.value)}/>
+            {emailExists && <p className="text-danger">Email already exists</p>}
           </div>
           <div className="mb-3">
             <label htmlFor="email">
