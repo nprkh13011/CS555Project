@@ -64,7 +64,7 @@ class LieTest extends Component {
                 </div>
             </div>
         )
-        }
+    }
 
 }
 export default LieTest;

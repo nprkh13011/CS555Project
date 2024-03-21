@@ -6,6 +6,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import LieTest from './components/LieTest';
+import Logout from './components/Logout';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/lietest" element={<LieTest />} />
-        {/* <Route path='/logout' element={<Logout />} /> */}
+        <Route path='/logout' element={<Logout />} />
       </Routes>
     </BrowserRouter>
   )

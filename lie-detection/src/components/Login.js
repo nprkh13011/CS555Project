@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 // import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -40,7 +41,8 @@ const Login = () => {
               placeholder='Enter Password' />
           </div>
           <button type="submit" className="btn btn-secondary w-50 rounded-10 ">Submit</button>
-          
+          <br/>
+          <Link to='/signup'>Click Here to Register</Link>
         </form>
       </div>
     </div>
