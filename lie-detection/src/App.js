@@ -1,12 +1,13 @@
 import React from 'react';
 import Signup from './components/SignUp';
 import Login from './components/Login';
-import Home from './components/Home';
+import About from './components/About';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import LieTest from './components/LieTest';
 import Logout from './components/Logout';
+import Home from './components/Home';
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/lietest" element={<LieTest />} />
         <Route path='/logout' element={<Logout />} />
-        <Route path="/" element={<Home />} />
+        <Route path='/home' element={<Home />} />
+        <Route path="/" element={<About />} />
       </Routes>
     </BrowserRouter>
   )
