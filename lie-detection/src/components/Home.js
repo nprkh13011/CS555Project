@@ -9,9 +9,9 @@ const Home = () => {
     
     return (
         <div className="d-flex justify-content-center align-items-center bg-white vh-100">
-            <div className="peach p-3 rounded w-25 text-center teal">
+            <div className="peach p-3 rounded w-50 h-70 text-center teal">
             <img src={Logo} alt="FibFinders Logo" className="mb-3 rounded" style={{ maxWidth: "150px" }} />
-            <h2>Home</h2>
+            <h5 className="h-15"> Through this application, you can determine if you have taken a certain professor before and recommend the class to other users. Through the analysis of your EEG waves, we can see if you're bring truthful or not, affecting the recommendation rate of each professor.</h5>
             <div className="mb-3">
             <button className="btn btn-primary rounded" onClick={() => navigate('/signup')}>Sign Up</button>
             </div>
