@@ -2,12 +2,19 @@ import React, {Component, useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from 'bootstrap'
 import {Navigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
+const About = () => {
+    const navigate = useNavigate()
+}
 
 class LieTest extends Component {
     constructor(props) {
         super(props)
 
         this.onClickForward = this.onClickForward.bind(this)
+        this.returnHome = this.returnHome.bind(this)
 
         const img1 = require('./images/image1.png');
         const img2 = require('./images/image2.png');
@@ -49,6 +56,27 @@ class LieTest extends Component {
             })
         }
     }
+
+    returnHome() {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to pick up where you left off",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, exit test"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                this.setState({
+                    index: this.state.imgList.length,
+                    endOfTest: true
+                })    
+            }
+          });
+    }
+
    render() {
         return (
             <div>
@@ -57,9 +85,10 @@ class LieTest extends Component {
                     <h1 className="mb-4">Lie Test</h1>
                     <h2 className='lietest'>Question {this.state.index + 1}</h2>
                     <img src = {this.state.imgList[this.state.index]}/><br/>
-                  {this.state.endOfTest && <Navigate to="/login"/> } 
+                  {this.state.endOfTest && <Navigate to="/home"/> } 
                     <button onClick={this.onClickForward}>Yes</button><br/>
-                    <button onClick={this.onClickForward}>No</button>
+                    <button onClick={this.onClickForward}>No</button><br/>
+                    <button onClick={this.returnHome}>End Test</button>
                 </div>
                 </div>
             </div>
