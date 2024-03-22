@@ -8,6 +8,7 @@ import './App.css';
 import LieTest from './components/LieTest';
 import Logout from './components/Logout';
 import Home from './components/Home';
+import Instructions from './components/Instructions';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/logout' element={<Logout />} />
         <Route path='/home' element={<Home />} />
         <Route path="/" element={<About />} />
+        <Route path="/instructions" element={<Instructions />} />
       </Routes>
     </BrowserRouter>
   )
