@@ -17,7 +17,7 @@ const Login = () => {
       .then(response => {
         if (response.data.exists) {
           //should be changed to home page after merge
-          navigate('/signup', {state: {emailid: email}});
+          navigate('/home', {state: {emailid: email}});
         } else {
           setAuth(true)
         }
