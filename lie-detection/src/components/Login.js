@@ -10,13 +10,12 @@ const Login = () => {
   const navigate = useNavigate();
   const [auth, setAuth] = useState(false)
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post('http://localhost:3001/login', { email, password })
       .then(response => {
         if (response.data.exists) {
-          //should be changed to home page
+          //should be changed to home page after merge
           navigate('/signup', {state: {emailid: email}});
         } else {
           setAuth(true)
