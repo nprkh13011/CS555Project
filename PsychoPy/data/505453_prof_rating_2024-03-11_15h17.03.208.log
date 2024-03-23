@@ -1,0 +1,40 @@
+12.4745 	EXP 	Created window1 = Window(allowGUI=True, allowStencil=False, autoLog=True, backendConf=UNKNOWN, backgroundFit=<method-wrapper '__getattribute__' of attributeSetter object at 0x0000018CDE201CA0>, backgroundImage=<method-wrapper '__getattribute__' of attributeSetter object at 0x0000018CDE201C40>, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x0000018CDE201AC0>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x0000018CDE7757F0>, multiSample=False, name='window1', numSamples=2, pos=(192, 108), screen=0, size=array([1536,  864]), stencilBits=0, stereo=False, title='PsychoPy', units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+12.4746 	EXP 	window1: mouseVisible = True
+12.4747 	EXP 	window1: backgroundImage = ''
+12.4747 	EXP 	window1: backgroundFit = 'none'
+12.4768 	EXP 	window1: Attempting to measure frame rate of screen (0) ...
+12.4769 	EXP 	window1: recordFrameIntervals = False
+12.6551 	EXP 	window1: recordFrameIntervals = True
+12.9367 	WARNING 	t of last frame was 62.81ms (=1/15)
+12.9569 	WARNING 	t of last frame was 20.19ms (=1/49)
+13.1583 	EXP 	Screen (0) actual frame rate measured at 59.68Hz
+13.1583 	EXP 	window1: recordFrameIntervals = False
+13.1584 	EXP 	window1: mouseVisible = True
+13.2118 	WARNING 	launchHubServer: If using the iohub mouse or eyetracker devices, fullScr should be True.
+16.3222 	EXP 	prof_rating: status = STARTED
+16.3226 	EXP 	window1: mouseVisible = True
+16.3957 	EXP 	Created text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+16.3959 	EXP 	window1: mouseVisible = True
+16.4041 	EXP 	Created HaveYouTakenThisProf = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='HaveYouTakenThisProf', opacity=1.0, ori=0.0, pos=array([0. , 0.4]), rgb=UNKNOWN, text='Have you taken a class with this Professor?', units='height', win=Window(...), wrapWidth=1)
+16.4043 	EXP 	window1: mouseVisible = True
+16.4183 	EXP 	Created imageProf1 = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, image=str(...), interpolate=True, mask=None, maskParams=None, name='imageProf1', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([0.5, 0.5]), texRes=128.0, units='height', win=Window(...))
+16.4184 	EXP 	window1: mouseVisible = True
+16.4304 	EXP 	Created imageYesButton = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, image=str(...), interpolate=True, mask=None, maskParams=None, name='imageYesButton', opacity=1.0, ori=0.0, pos=array([-0.25, -0.25]), size=array([0.5, 0.5]), texRes=128.0, units='height', win=Window(...))
+16.4305 	EXP 	window1: mouseVisible = True
+16.4416 	EXP 	Created imageNoButton = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-3.0, draggable=False, flipHoriz=False, flipVert=False, image=str(...), interpolate=True, mask=None, maskParams=None, name='imageNoButton', opacity=1.0, ori=0.0, pos=array([ 0.25, -0.25]), size=array([0.5, 0.5]), texRes=128.0, units='height', win=Window(...))
+16.4418 	EXP 	window1: mouseVisible = True
+16.4468 	EXP 	Created textThankYouMessage = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='textThankYouMessage', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='Thank you for your time!', units='height', win=Window(...), wrapWidth=1)
+0.0581 	EXP 	text: autoDraw = True
+1.1891 	EXP 	text: autoDraw = False
+1.1891 	EXP 	HaveYouTakenThisProf: autoDraw = True
+1.1891 	EXP 	imageProf1: autoDraw = True
+1.1891 	EXP 	imageYesButton: autoDraw = True
+1.1891 	EXP 	imageNoButton: autoDraw = True
+6.1891 	EXP 	HaveYouTakenThisProf: autoDraw = False
+6.1891 	EXP 	imageProf1: autoDraw = False
+6.1891 	EXP 	imageYesButton: autoDraw = False
+6.1891 	EXP 	imageNoButton: autoDraw = False
+6.1891 	EXP 	textThankYouMessage: autoDraw = True
+9.1873 	EXP 	textThankYouMessage: autoDraw = False
+9.1875 	EXP 	prof_rating: status = STOPPED
+9.2210 	EXP 	window1: mouseVisible = True
