@@ -16,7 +16,6 @@ const Login = () => {
     axios.post('http://localhost:3001/login', { email, password })
       .then(response => {
         if (response.data.exists) {
-          //should be changed to home page after merge
           navigate('/home', {state: {emailid: email}});
         } else {
           setAuth(true)
