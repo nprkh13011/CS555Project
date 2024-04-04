@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react'
+import React, { useState, Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from 'bootstrap'
 import {Navigate} from 'react-router-dom';
@@ -11,6 +11,8 @@ const About = () => {
 }
 
 class LieTest extends Component {
+    
+
     constructor(props) {
         super(props)
 
@@ -77,12 +79,12 @@ class LieTest extends Component {
             }
           });
     }
-
    render() {
+
         return (
             <div>
                 <div className="d-flex justify-content-center align-items-center vw-100 vh-100">
-                    <Progress percentage={80}/>
+                    <Progress />
                 {/* <div className="bg-white p-5 rounded border " style = {{width:'50%'}}>
                     <h1 className="mb-4">Lie Test</h1>
                     <h2 className='lietest'>Question {this.state.index + 1}</h2>
