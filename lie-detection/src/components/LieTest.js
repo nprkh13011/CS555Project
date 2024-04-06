@@ -59,13 +59,13 @@ class LieTest extends Component {
     returnHome() {
 
         Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to pick up where you left off",
+            title: "Are You Sure?",
+            text: "You Won't Be Able to Pick Up Where You Left Off",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, exit test"
+            confirmButtonText: "Yes, Restart Test"
           }).then((result) => {
             if (result.isConfirmed) {
                 this.setState({
@@ -88,7 +88,7 @@ class LieTest extends Component {
                   {this.state.endOfTest && <Navigate to="/home"/> } 
                     <button className='btn btn-primary rounded' onClick={this.onClickForward}>Yes</button><br/>
                     <button className='btn btn-primary rounded' onClick={this.onClickForward}>No</button><br/>
-                    <button className='btn btn-secondary rounded' onClick={this.returnHome}>End Test</button>
+                    <button className='btn btn-secondary rounded' onClick={this.returnHome}>Restart Test</button>
                 </div> 
             
                 </div>
