@@ -34,10 +34,8 @@ app.post('/login', async (req, res) => {
     try {
         const user = await UserModel.findOne({ email });
         if (user) {
-            console.log(password)
             
             if (user.password !== password){
-                console.log("hi")
                 res.json({ exists: false });
             }
             else{
