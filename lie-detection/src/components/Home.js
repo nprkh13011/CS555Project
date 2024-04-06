@@ -10,6 +10,7 @@ const About = () => {
         <div className="d-flex justify-content-center align-items-center bg-white vh-100">
             <div className="peach p-3 rounded w-50 h-70 text-center teal">
                 <img src={Logo} alt="FibFinders Logo" className="mb-3 rounded" style={{ maxWidth: "150px" }} />
+            <h1>Welcome to FibFinders!</h1>
             <div className="mb-3">
             <button className="btn btn-primary rounded" onClick={() => navigate('/ratings')}>View Professor Ratings</button>
             </div>
