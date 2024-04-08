@@ -33,9 +33,9 @@ it("should allow the user to submit/sign in to the application", async () => {
      // button should take in email and password
     submit.mockResolvedValue({email: "testing@test.com", password: "testing123"})
    
-    // await act(async ()=> {
-    // expect(submit).toHaveBeenCalledWith({email: "testing@test.com", password: "testing123"});
-    // });
+    await act(async ()=> {
+    expect(submit).toHaveBeenCalledWith({email: "testing@test.com", password: "testing123"});
+    });
     await submit();
 });
 

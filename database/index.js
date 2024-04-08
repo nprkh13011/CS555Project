@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const UserModel = require('./models/Users')
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 
 const app = express()
 app.use(cors())
@@ -34,10 +34,8 @@ app.post('/login', async (req, res) => {
     try {
         const user = await UserModel.findOne({ email });
         if (user) {
-            console.log(password)
             
             if (user.password !== password){
-                console.log("hi")
                 res.json({ exists: false });
             }
             else{

@@ -1,11 +1,10 @@
 import React, {useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-// import axios from 'axios';
 import { Link } from 'react-router-dom'
 
 const Logout = () => {
- 
   return (
+    // div tags classname are for UI purposes
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="bg-white p-5 rounded border " style = {{width:'35%'}}>
         <h1 className="mb-4">Logout</h1>
