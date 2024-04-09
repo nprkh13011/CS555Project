@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import Signup from './components/SignUp.js';
 import Login from './components/Login.js';
 import About from './components/About.js';
@@ -12,6 +12,19 @@ import Instructions from './components/Instructions.js';
 import Rankings from './components/Rankings.js'
 
 function App() {
+  const [results, setResults] = useState([])
+
+  useEffect(() => {
+    fetchResults()
+  }, [])
+
+  const fetchResults = async () => {
+    const response = await fetch("http://127.0.0.1:5000/results")
+    const data = await response.json()
+    setResults(data.results)
+    console.log(data.results)
+  }
+
   return (
     <BrowserRouter >
       <Routes>
