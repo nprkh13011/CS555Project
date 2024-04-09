@@ -9,7 +9,7 @@ import LieTest from './components/LieTest.js';
 import Logout from './components/Logout.js';
 import Home from './components/Home.js';
 import Instructions from './components/Instructions.js';
-import Ratings from './components/Ratings.js';
+import Rankings from './components/Rankings.js'
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path="/" element={<About />} />
         <Route path="/instructions" element={<Instructions />} />
-        <Route path='/ratings' element={<Ratings />}/>
+        <Route path="/rankings" element={<Rankings />} />
       </Routes>
     </BrowserRouter>
   )
