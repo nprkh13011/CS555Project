@@ -75,26 +75,27 @@ class LieTest extends Component {
             }
           });
     }
-   render() {
+    
+    render() {
 
         return (
-            <div>
-                <div className="d-flex justify-content-center align-items-center vw-100 vh-100">
-                <Progress />   
-                 <div className="bg-white p-5 rounded border " style = {{width:'50%'}}>
-                    <h1 className="mb-4">Do You Know This Professor from Stevens?</h1>
-                    <h2 className='lietest'>Question {this.state.index + 1}</h2>
-                    <img src = {this.state.imgList[this.state.index]}/><br/>
-                  {this.state.endOfTest && <Navigate to="/home"/> } 
-                    <button className='btn btn-primary rounded' onClick={this.onClickForward}>Yes</button><br/>
-                    <button className='btn btn-primary rounded' onClick={this.onClickForward}>No</button><br/>
-                    <button className='btn btn-secondary rounded' onClick={this.returnHome}>Restart Test</button>
-                </div> 
-            
+            <div className="d-flex flex-column align-items-center justify-content-between vh-100">
+                <div className="d-flex justify-content-center align-items-center vw-100 vh-100">  
+                    <div className="bg-white p-5 rounded border " style = {{width:'50%'}}>
+                        <h1 className="mb-4">Do You Know This Professor from Stevens?</h1>
+                        <h2 className='lietest'>Question {this.state.index + 1}</h2>
+                        <img src = {this.state.imgList[this.state.index]}/><br/>
+                        <div className="d-flex justify-content-between">
+                        {this.state.endOfTest && <Navigate to="/results"/> }
+                            <button className='btn btn-primary rounded' onClick={this.onClickForward}>Yes</button><br/>
+                            <button className='btn btn-primary rounded' onClick={this.onClickForward}>No</button><br/>
+                        </div>
+                        <button className='btn btn-secondary rounded' onClick={this.returnHome}>Restart Test</button>
+                    </div> 
                 </div>
+                <Progress />
             </div>
         )
     }
-
 }
 export default LieTest;
