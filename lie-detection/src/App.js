@@ -13,18 +13,18 @@ import Rankings from './components/Rankings.js';
 import ResultsPage from './components/Results.js';
 
 function App() {
-  const [results, setResults] = useState([])
+//   const [results, setResults] = useState([])
 
-  useEffect(() => {
-    fetchResults()
-  }, [])
+//   useEffect(() => {
+//     fetchResults()
+//   }, [])
 
-  const fetchResults = async () => {
-    const response = await fetch("http://127.0.0.1:5000/results")
-    const data = await response.json()
-    setResults(data.results)
-    console.log(data.results)
-  }
+//   const fetchResults = async () => {
+//     const response = await fetch("http://127.0.0.1:5000/results")
+//     const data = await response.json()
+//     setResults(data.results)
+//     console.log(data.results)
+//   }
 
   return (
     <BrowserRouter >
