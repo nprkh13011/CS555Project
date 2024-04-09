@@ -9,8 +9,8 @@ import './Rankings.css';
 
 function Rankings() {
 
-    const [period, setPeriod] = useState(0);
-
+  const [period, setPeriod] = useState(0);
+  const navigate = useNavigate();
   const handleClick = (e) => {
      
     setPeriod(e.target.dataset.id)
@@ -20,8 +20,10 @@ function Rankings() {
     <div className="board">
         <h1 className='leaderboard'>Leaderboard</h1>
 
-        <div className="duration">
-            <button onClick={handleClick} data-id='0'>All-Time</button>
+      <div className="duration">
+            <button onClick={() => navigate('/home')}>Home</button>
+            <button onClick={() => navigate('/instructions')}>Start Test</button>
+            <button onClick={() => navigate('/logout')}>Logout</button>
         </div>
           <div className="profs">
             <Profiles Leaderboard={between(Leaderboard, period)}></Profiles>
