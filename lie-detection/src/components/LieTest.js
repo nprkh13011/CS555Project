@@ -38,7 +38,8 @@ class LieTest extends Component {
             imgList: [img1, img2,img3,img4,img5,img6, 
                     img7, img8, img9,img10,img11,img12,
                     img13, img14, img15, img16, img17],
-            endOfTest: false
+            endOfTest: false,
+            redirectToHome: false
         }
     }
     
@@ -68,11 +69,9 @@ class LieTest extends Component {
             confirmButtonText: "Yes, Restart Test"
           }).then((result) => {
             if (result.isConfirmed) {
-                // this.setState({
-                //     index: this.state.imgList.length,
-                //     endOfTest: true
-                // })   
-                window.location.href = "/home"; 
+                this.setState({
+                    redirectToHome: true
+                });
             }
           });
     }
@@ -94,6 +93,7 @@ class LieTest extends Component {
                         <button className='btn btn-secondary rounded' onClick={this.returnHome}>Restart Test</button>
                     </div> 
                 </div>
+                {this.state.redirectToHome && <Navigate to="/home" />}
                 <Progress />
             </div>
         )
