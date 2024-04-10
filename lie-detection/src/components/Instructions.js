@@ -11,7 +11,7 @@ const InstructionsPage = () => {
                 <p>You will be presented with images of professors and asked "Have you taken a class with this professor?"</p>
                 <p>You will be given the option to choose "Yes" or "No".</p>
                 <p>Afterwards, you will be asked "Would you recommend the class with the professor?" and again choose either "Yes" or "No".</p>
-                <p>At the end, a ranking of professors will be displayed.</p>
+                <p>At the end, a ranking of professors will be displayed as well as which questions you told the truth or lied.</p>
                 <div className="mb-3">
                     <button className="btn btn-success rounded" onClick={() => navigate('/lietest')}>Continue</button>
                 </div>
