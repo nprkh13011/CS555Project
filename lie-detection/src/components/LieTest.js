@@ -90,7 +90,7 @@ class LieTest extends Component {
                             <button className='btn btn-primary rounded' onClick={this.onClickForward}>Yes</button><br/>
                             <button className='btn btn-primary rounded' onClick={this.onClickForward}>No</button><br/>
                         </div>
-                        <button className='btn btn-secondary rounded' onClick={this.returnHome}>Restart Test</button>
+                        <button className='btn btn-danger rounded' onClick={this.returnHome}>Restart Test</button>
                     </div> 
                 </div>
                 {this.state.redirectToHome && <Navigate to="/home" />}
