@@ -17,8 +17,10 @@ const ResultsPage = () => {
                         <b>Questions answered untruthfully:</b>
                     </div>
                 </div>
-                <div className="mb-3">
+                <div className="mt-3 d-flex justify-content-between">
+                    <button className="btn btn-success rounded" onClick={() => navigate('/home')}>Go Home</button>
                     <button className="btn btn-success rounded" onClick={() => navigate('/rankings')}>See Professor Rankings</button>
+                    <button className="btn btn-danger rounded" onClick={() => navigate('/logout')}>Logout</button>
                 </div>
             </div>
         </div>
