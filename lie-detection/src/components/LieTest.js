@@ -1,7 +1,7 @@
-import React, { useState, Component , useEffect} from 'react';
+import React, { useState, Component, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from 'bootstrap'
-import {Navigate} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Progress from './Progress.js';
@@ -24,7 +24,7 @@ import img16 from './images/image16.png';
 import img17 from './images/image17.png';
 
 class LieTest extends Component {
-    
+
 
     constructor(props) {
         super(props)
@@ -32,20 +32,20 @@ class LieTest extends Component {
         this.onClickForward = this.onClickForward.bind(this)
         this.returnHome = this.returnHome.bind(this)
 
-       
+
         this.state = {
             index: 0,
-            imgList: [img1, img2,img3,img4,img5,img6, 
-                    img7, img8, img9,img10,img11,img12,
-                    img13, img14, img15, img16, img17],
+            imgList: [img1, img2, img3, img4, img5, img6,
+                img7, img8, img9, img10, img11, img12,
+                img13, img14, img15, img16, img17],
             endOfTest: false,
             redirectToHome: false
         }
     }
-    
+
     onClickForward() {
         //if at the end of the test
-        if (this.state.index + 1 === this.state.imgList.length){
+        if (this.state.index + 1 === this.state.imgList.length) {
             this.setState({
                 index: this.state.imgList.length,
                 endOfTest: true
@@ -67,40 +67,47 @@ class LieTest extends Component {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, Restart Test"
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 this.setState({
                     redirectToHome: true
                 });
             }
-          });
+        });
     }
 
     handleProgressChange = (value) => {
         this.setState({
-            index: value - 1 
+            index: value - 1
         });
     };
 
     render() {
 
         return (
-            <div className="d-flex flex-column align-items-center justify-content-between vh-100">
-                <div className="d-flex justify-content-center align-items-center vw-100 vh-100">  
-                    <div className="bg-white p-5 rounded border " style = {{width:'50%'}}>
+            
+            <div className="d-flex flex-column align-items-center vw-100 vh-100">
+                <div style={{ height: '100%' }} className="d-flex flex-column align-items-center">
+                <Progress style={{ marginTop: '50px'  }} current={this.state.index + 1} onChange={this.handleProgressChange} />
+
+                    <div className="bg-white p-5 rounded border " style={{ width: '50%' }}>
                         <h1 className="mb-4">Do You Know This Professor from Stevens?</h1>
                         <h2 className='lietest'>Question {this.state.index + 1}</h2>
-                        <img src = {this.state.imgList[this.state.index]}/><br/>
+                        <img src={this.state.imgList[this.state.index]} /><br />
                         <div className="d-flex justify-content-between">
-                        {this.state.endOfTest && <Navigate to="/results"/> }
-                            <button className='btn btn-primary rounded' onClick={this.onClickForward}>Yes</button><br/>
-                            <button className='btn btn-primary rounded' onClick={this.onClickForward}>No</button><br/>
+                            {this.state.endOfTest && <Navigate to="/results" />}
+                            <button className='btn btn-primary rounded' onClick={this.onClickForward}>Yes</button><br />
+                            <button className='btn btn-primary rounded' onClick={this.onClickForward}>No</button><br />
                         </div>
                         <button className='btn btn-danger rounded' onClick={this.returnHome}>Restart Test</button>
-                    </div> 
+                    </div>
+                    
                 </div>
+                <div className="d-flex justify-content-center">
+                    
+                </div>                
                 {this.state.redirectToHome && <Navigate to="/home" />}
-                <Progress current={this.state.index + 1} onChange={this.handleProgressChange}/>
+
             </div>
         )
     }

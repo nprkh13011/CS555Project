@@ -11,7 +11,7 @@ const Progress = ({ current, onChange }) => {
   
   return (
     <div >
-      <Pagination hidePrevButton count={17} page={current} onChange={handlePageChange} color="primary" variant="outlined" data-testid="pagination"/>
+      <Pagination size="lg" hidePrevButton count={17} page={current} onChange={handlePageChange} color="primary" variant="outlined" data-testid="pagination"/>
     </div>
   )
 }
