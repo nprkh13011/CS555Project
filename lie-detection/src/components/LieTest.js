@@ -75,7 +75,13 @@ class LieTest extends Component {
             }
           });
     }
-    
+
+    handleProgressChange = (value) => {
+        this.setState({
+            index: value - 1 
+        });
+    };
+
     render() {
 
         return (
@@ -94,7 +100,7 @@ class LieTest extends Component {
                     </div> 
                 </div>
                 {this.state.redirectToHome && <Navigate to="/home" />}
-                <Progress />
+                <Progress current={this.state.index + 1} onChange={this.handleProgressChange}/>
             </div>
         )
     }
