@@ -5,18 +5,14 @@ import {ProgressBar} from 'react-bootstrap';
 
 
 const Progress = () => {
-  const [progress, setProgress] = useState(0)
-  // const handleProgress = (e) => {
-  //   let num = progress
-  //   num = num + 6
-  //   if (num > 100){
-  //     num = 100
-  //   }
-  //   setProgress(num)
-  // }
+  const [progress, setProgress] = useState(1)
+  const handleChange = (e, val) => {
+    setProgress(val);
+  }
+  
   return (
     <div >
-      <Pagination hidePrevButton count={17} color="primary" variant="outlined" data-testid="pagination"/>
+      <Pagination hidePrevButton count={17} page={progress} onChange={(e, val) => setProgress(val)} color="primary" variant="outlined" data-testid="pagination"/>
       
       {/* <ProgressBar striped animated now={progress} style={{ width: 500 }}/>
       <button type="submit" onClick={handleProgress} className="btn btn-secondary w-20 mt-5 rounded-10 ">Next</button> */}
