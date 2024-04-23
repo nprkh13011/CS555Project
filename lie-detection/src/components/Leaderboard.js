@@ -20,119 +20,119 @@ export const Leaderboard = [
     {
         name: "Sandeep Bhatt",
         location: "Teaching Professor",
-        score : 1550,
+        score : 87,
         img: image1,
         dt: "2022-02-10"
     },
     {
         name: "Eduardo Bonelli",
         location: "Teaching Professor",
-        score : 2310,
+        score : 73,
         img: image2,
         dt: "2021-01-01"
     },
     {
         name: "Philippe Meunier",
         location: "Teaching Associate Professor",
-        score : 350,
+        score : 92,
         img: image3,
         dt: "2021-08-17"
     },
     {
         name: "Philippos Mordohai",
         location: "Professor",
-        score : 2100,
+        score : 70,
         img: image4,
         dt: "2021-10-23"
     },
     {
         name: "Dave Naumann",
         location: "Professor and Chair of the Department of Computer Science",
-        score : 1250,
+        score : 86,
         img: image5,
         dt: "2022-01-22"
     },
     {
         name: "Antonio Nicolosi",
         location: "Associate Professor",
-        score : 5250,
+        score : 76,
         img: image6,
         dt: "2022-01-21"
     },
     {
         name: "Nikolaos Triandopoulos",
         location: "Associate Professor",
-        score : 5250,
+        score : 90,
         img: image7,
         dt: "2022-01-21"
     },
     {
         name: "Erisa Terolli",
         location: "Teaching Assistant Professor",
-        score : 5250,
+        score : 73,
         img: image8,
         dt: "2022-01-21"
     },
     {
         name: "Tegan Brennan",
         location: "Assistant Professor",
-        score : 5250,
+        score : 82,
         img: image9,
         dt: "2022-01-21"
     },
     {
         name: "Dominic Duggan",
         location: "Associate Professor",
-        score : 5250,
+        score : 54,
         img: image10,
         dt: "2022-01-21"
     },
     {
         name: "Enrique Dunn",
         location: "Associate Professor",
-        score : 5250,
+        score : 81,
         img: image11,
         dt: "2022-01-21"
     },
     {
         name: "Shudong Hao",
         location: "Teaching Assistant Professor",
-        score : 5250,
+        score : 93,
         img: image12,
         dt: "2022-01-21"
     },
     {
         name: "Patrick Hill",
         location: "Lecturer - Faculty",
-        score : 5250,
+        score : 89,
         img: image13,
         dt: "2022-01-21"
     },
     {
         name: "Samuel Kim",
         location: "Teaching Professor",
-        score : 5250,
+        score : 91,
         img: image14,
         dt: "2022-01-21"
     },
     {
         name: "Reza Peyrovian",
         location: "Senior Lecturer",
-        score : 5250,
+        score : 77,
         img: image15,
         dt: "2022-01-21"
     },
     {
         name: "Georgios Portokalidis",
         location: "Associate Professor",
-        score : 5250,
+        score : 42,
         img: image16,
         dt: "2022-01-21"
     },
     {
         name: "Hui Wang",
         location: "Professor",
-        score : 5250,
+        score : 63,
         img: image17,
         dt: "2022-01-21"
     }
