@@ -40,3 +40,34 @@
 .peach {
     background-color: peachpuff;
 }
+h1{
+font-weight: bold;
+}
+.peach-container {
+  background-color: peachpuff; /* Peach background */
+  width: 90%;
+  height: 70%;
+}
+.white-container{
+  background-color: white;
+  height: 85%;
+}
+.progress-bar-container {
+  margin-top: 20px;
+  margin-bottom: 20px; /* Adjust as necessary for your design */
+  display: flex;
+  justify-content: center;
+}
+.image-container img{
+  max-width: 100%; /* This ensures the image is responsive and doesn't overflow */
+  height: auto;
+  margin-bottom: 1rem; /* Spacing below the image */
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+.button-container button{
+  flex: 1; /* This makes sure the buttons take up equal space within the container */
+  margin: 0 10px; /* Spacing between buttons */
+}

@@ -85,31 +85,51 @@ class LieTest extends Component {
     render() {
 
         return (
-            
-            <div className="d-flex flex-column align-items-center vw-100 vh-100">
-                <div style={{ height: '100%' }} className="d-flex flex-column align-items-center">
-                <Progress style={{ marginTop: '50px'  }} current={this.state.index + 1} onChange={this.handleProgressChange} />
-
-                    <div className="bg-white p-5 rounded border " style={{ width: '50%' }}>
-                        <h1 className="mb-4">Do You Know This Professor from Stevens?</h1>
-                        <h2 className='lietest'>Question {this.state.index + 1}</h2>
-                        <img src={this.state.imgList[this.state.index]} /><br />
-                        <div className="d-flex justify-content-between">
-                            {this.state.endOfTest && <Navigate to="/results" />}
-                            <button className='btn btn-primary rounded' onClick={this.onClickForward}>Yes</button><br />
-                            <button className='btn btn-primary rounded' onClick={this.onClickForward}>No</button><br />
-                        </div>
-                        <button className='btn btn-danger rounded' onClick={this.returnHome}>Restart Test</button>
-                    </div>
-                    
+          <div className="d-flex justify-content-center align-items-center vh-100">
+            <div className="peach-container p-3 rounded text-center">
+              <div className="progress-bar-container">
+                <Progress
+                  style={{ marginTop: "50px", marginBottom: "50px" }}
+                  current={this.state.index + 1}
+                  onChange={this.handleProgressChange}
+                />
+              </div>
+              <div className="white-container p-3 m-2 rounded text-center">
+                <h1 className="lietest">
+                  Have you taken a class with this professor?
+                </h1>
+                <div className="image-container my-4">
+                  <img src={this.state.imgList[this.state.index]} />
                 </div>
-                <div className="d-flex justify-content-center">
-                    
-                </div>                
-                {this.state.redirectToHome && <Navigate to="/home" />}
+                <div className="button-container d-flex justify-content-between my-3">
+                  {this.state.endOfTest && <Navigate to="/results" />}
+                  <button
+                    className="btn btn-primary rounded mx-2"
+                    onClick={this.onClickForward}
+                  >
+                    Yes
+                  </button>
 
+                  <button
+                    className="btn btn-primary rounded mx-2"
+                    onClick={this.onClickForward}
+                  >
+                    No
+                  </button>
+                </div>
+                <button
+                  className="btn btn-danger rounded"
+                  onClick={this.returnHome}
+                  style={{ marginTop: "30px" }}
+                >
+                  Restart Test
+                </button>
+              </div>
             </div>
-        )
+            <div className="d-flex justify-content-center"></div>
+            {this.state.redirectToHome && <Navigate to="/home" />}
+          </div>
+        );
     }
 }
 export default LieTest;
