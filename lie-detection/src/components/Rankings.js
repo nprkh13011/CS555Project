@@ -16,6 +16,18 @@ function Rankings() {
     setPeriod(e.target.dataset.id)
   }
 
+  const shareResults = () => {
+    const filteredLeaderboard = between(Leaderboard, period);
+    const leaderboardText = filteredLeaderboard.map((item, index) => `${index + 1}. ${item.username}: ${item.score}`).join('\n');
+    navigator.clipboard.writeText(leaderboardText)
+      .then(() => {
+        alert("Leaderboard copied to clipboard!");
+      })
+      .catch((error) => {
+        console.error("Failed to copy leaderboard: ", error);
+      });
+  };
+
   return (
     <div className="board">
         <h1 className='leaderboard'>Leaderboard</h1>
@@ -23,6 +35,7 @@ function Rankings() {
       <div className="duration">
             <button onClick={() => navigate('/home')}>Home</button>
             <button onClick={() => navigate('/instructions')}>Start Test</button>
+            <button onClick={shareResults}>Share Results</button>
             <button onClick={() => navigate('/logout')}>Logout</button>
         </div>
           <div className="profs">
