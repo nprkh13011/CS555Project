@@ -17,14 +17,13 @@ function Rankings() {
   }
 
   const shareResults = () => {
-    const filteredLeaderboard = between(Leaderboard, period);
-    const leaderboardText = filteredLeaderboard.map((item, index) => `${index + 1}. ${item.username}: ${item.score}`).join('\n');
-    navigator.clipboard.writeText(leaderboardText)
+    const leaderboardLink = window.location.href;
+    navigator.clipboard.writeText(leaderboardLink)
       .then(() => {
-        alert("Leaderboard copied to clipboard!");
+        alert("Link copied to clipboard!");
       })
       .catch((error) => {
-        console.error("Failed to copy leaderboard: ", error);
+        console.error("Failed to copy link: ", error);
       });
   };
 
