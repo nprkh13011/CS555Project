@@ -1,10 +1,11 @@
-import React, { useState, Component, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { Button } from 'bootstrap'
+import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navigate } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Progress from './Progress.js';
+import axios from 'axios';
+import Leaderboard from './Leaderboard.js';
+
 import img1 from './images/image1.png';
 import img2 from './images/image2.png';
 import img3 from './images/image3.png';
@@ -23,42 +24,65 @@ import img15 from './images/image15.png';
 import img16 from './images/image16.png';
 import img17 from './images/image17.png';
 
-class LieTest extends Component {
+const LieTest = () => {
+    const [index, setIndex] = useState(0);
+    const [endOfTest, setEndOfTest] = useState(false);
+    const [redirectToHome, setRedirectToHome] = useState(false);
+    const [imgList] = useState([
+        img1, img2, img3, img4, img5, img6,
+        img7, img8, img9, img10, img11, img12,
+        img13, img14, img15, img16, img17
+    ]);
+    const [leaderboardWithScores, setLeaderboardWithScores] = useState([]);
 
+    useEffect(() => {
+        const fetchDataAndComputeScores = async () => {
+            try {
+                const response = await axios.get('http://localhost:3001/professors');
+                const professorData = response.data;
 
-    constructor(props) {
-        super(props)
+                const updatedLeaderboard = Leaderboard.map(professor => {
+                    const matchingProfessor = professorData.find(p => p.name === professor.name);
+                    if (matchingProfessor) {
+                        const score = (matchingProfessor.trueResponses / matchingProfessor.totalTests) * 100;
+                        return {
+                            ...professor,
+                            score: score.toFixed(2)
+                        };
+                    } else {
+                        return professor;
+                    }
+                });
 
-        this.onClickForward = this.onClickForward.bind(this)
-        this.returnHome = this.returnHome.bind(this)
+                setLeaderboardWithScores(updatedLeaderboard);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
 
+        fetchDataAndComputeScores();
+    }, []);
 
-        this.state = {
-            index: 0,
-            imgList: [img1, img2, img3, img4, img5, img6,
-                img7, img8, img9, img10, img11, img12,
-                img13, img14, img15, img16, img17],
-            endOfTest: false,
-            redirectToHome: false
-        }
-    }
+    const onClickForward = () => {
+        const professorIndex = index;
+        const hasSeenProfessor = Math.random() < 0.5;
 
-    onClickForward() {
-        //if at the end of the test
-        if (this.state.index + 1 === this.state.imgList.length) {
-            this.setState({
-                index: this.state.imgList.length,
-                endOfTest: true
+        axios.post('http://localhost:3001/update-professor', { professorIndex, hasSeenProfessor })
+            .then(response => {
+                console.log('Professor score updated successfully:', response.data, professorIndex, hasSeenProfessor);
             })
-        } else { // if we don't reach end of the test
-            this.setState({
-                index: this.state.index + 1
-            })
+            .catch(error => {
+                console.error('Error updating professor score:', error);
+            });
+
+        if (index + 1 === imgList.length) {
+            setEndOfTest(true);
+        } else {
+            setIndex(index + 1);
         }
-    }
+    };
 
-    returnHome() {
-
+    const returnHome = () => {
         Swal.fire({
             title: "Are You Sure?",
             text: "You Won't Be Able to Pick Up Where You Left Off",
@@ -69,57 +93,51 @@ class LieTest extends Component {
             confirmButtonText: "Yes, Restart Test"
         }).then((result) => {
             if (result.isConfirmed) {
-                this.setState({
-                    redirectToHome: true
-                });
+                setRedirectToHome(true);
             }
-        });
-    }
-
-    handleProgressChange = (value) => {
-        this.setState({
-            index: value - 1
         });
     };
 
-    render() {
+    const handleProgressChange = (value) => {
+        setIndex(value - 1);
+    };
 
-        return (
-          <div className="d-flex justify-content-center align-items-center vh-100">
+    return (
+        <div className="d-flex justify-content-center align-items-center vh-100">
             <div className="peach-container p-3 rounded text-center">
-              <div className="progress-bar-container">
-                <Progress
-                  style={{ marginTop: "50px", marginBottom: "50px" }}
-                  current={this.state.index + 1}
-                  onChange={this.handleProgressChange}
-                />
-              </div>
-              <div className="white-container p-3 m-2 rounded text-center">
-                <h1 className="lietest">
-                  Have you taken a class with this professor?
-                </h1>
-                <div className="image-container my-4">
-                  <img src={this.state.imgList[this.state.index]} />
+                <div className="progress-bar-container">
+                    <Progress
+                        style={{ marginTop: "50px", marginBottom: "50px" }}
+                        current={index + 1}
+                        onChange={handleProgressChange}
+                    />
                 </div>
-                <div className="button-container d-flex justify-content-between my-3">
-                  {this.state.endOfTest && <Navigate to="/results" />}
-                  <button
-                    className="btn btn-primary rounded mx-2"
-                    onClick={this.onClickForward}
-                  >
-                    Yes
-                  </button>
+                <div className="white-container p-3 m-2 rounded text-center">
+                    <h1 className="lietest">
+                        Have you taken a class with this professor?
+                    </h1>
+                    <div className="image-container my-4">
+                        <img src={imgList[index]} alt={`Professor ${index + 1}`} />
+                    </div>
+                    <div className="button-container d-flex justify-content-between my-3">
+                        {endOfTest && <Navigate to="/results" />}
+                        <button
+                            className="btn btn-primary rounded mx-2"
+                            onClick={onClickForward}
+                        >
+                            Yes
+                        </button>
 
                   <button
                     className="btn btn-primary rounded mx-2"
-                    onClick={this.onClickForward}
+                    onClick={onClickForward}
                   >
                     No
                   </button>
                 </div>
                 <button
                   className="btn btn-danger rounded"
-                  onClick={this.returnHome}
+                  onClick={returnHome}
                   style={{ marginTop: "30px" }}
                 >
                   Restart Test
@@ -127,9 +145,9 @@ class LieTest extends Component {
               </div>
             </div>
             <div className="d-flex justify-content-center"></div>
-            {this.state.redirectToHome && <Navigate to="/home" />}
+            {redirectToHome && <Navigate to="/home" />}
           </div>
         );
     }
-}
+
 export default LieTest;

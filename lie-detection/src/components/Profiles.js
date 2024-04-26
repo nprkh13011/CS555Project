@@ -11,7 +11,6 @@ export default function profiles({ Leaderboard }) {
 
 function Item(data){
     return (
-
         <>
             {
                 data.map((value, index) => (
