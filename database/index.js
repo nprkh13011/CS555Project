@@ -66,7 +66,21 @@ app.post('/update-professor', async (req, res) => {
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
-});
+})
+app.get('/professors', async (req, res) => {
+    try {
+        // Fetch the professor data from the database
+        const professors = await ProfessorModel.find();
+
+        // Send the retrieved data as a response
+        res.json(professors);
+    } catch (error) {
+        // Handle errors
+        console.error('Error fetching professors:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+})
+
 
 
 
