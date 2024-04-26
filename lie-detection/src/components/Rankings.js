@@ -44,8 +44,6 @@ function Rankings() {
   )
 }
 
-
-
 function between(data, between){
     const today = new Date();
     const previous = new Date(today);

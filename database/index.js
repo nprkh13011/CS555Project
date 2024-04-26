@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const UserModel = require('./models/Users')
+const ProfessorModel = require('./models/Professor')
 // const bcrypt = require('bcrypt');
 
 const app = express()
@@ -49,6 +50,39 @@ app.post('/login', async (req, res) => {
         res.json(err);
     }
 })
+app.post('/update-professor', async (req, res) => {
+    const { professorIndex, hasSeenProfessor } = req.body;
+    try {
+        let professor = await ProfessorModel.findOne({ index: professorIndex });
+        if (!professor) {
+            professor = await ProfessorModel.create({ index: professorIndex });
+        }
+            professor.totalTests++;
+        if (hasSeenProfessor) {
+            professor.trueResponses++;
+        }
+        await professor.save();
+        res.json({ success: true });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+})
+app.get('/professors', async (req, res) => {
+    try {
+        // Fetch the professor data from the database
+        const professors = await ProfessorModel.find();
+
+        // Send the retrieved data as a response
+        res.json(professors);
+    } catch (error) {
+        // Handle errors
+        console.error('Error fetching professors:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+})
+
+
+
 
 app.listen(3001, () => {
     console.log("Server is running on http://localhost:3001")
