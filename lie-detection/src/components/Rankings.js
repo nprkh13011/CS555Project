@@ -6,26 +6,37 @@ import React, { useState } from 'react';
 import Profiles from './Profiles.js';
 import { Leaderboard } from './Leaderboard.js';
 import './Rankings.css';
+import html2canvas from 'html2canvas';
 
 function Rankings() {
 
   const [period, setPeriod] = useState(0);
   const navigate = useNavigate();
   const handleClick = (e) => {
-     
     setPeriod(e.target.dataset.id)
   }
 
   const shareResults = () => {
-    const leaderboardLink = window.location.href;
-    navigator.clipboard.writeText(leaderboardLink)
-      .then(() => {
-        alert("Link copied to clipboard!");
+    const leaderboardElement = document.querySelector('.profs');
+  
+    html2canvas(leaderboardElement)
+      .then(canvas => {
+        const image = canvas.toDataURL(); // Convert canvas to image data URL
+        const link = document.createElement('a');
+        link.href = image;
+        link.download = 'leaderboard.png'; // Set the filename for the downloaded image
+        
+        // Prompt the user before downloading
+        const confirmed = window.confirm('Do you want to download your leaderboard to share?');
+        if (confirmed) {
+          link.click(); // Trigger the download
+        }
       })
-      .catch((error) => {
-        console.error("Failed to copy link: ", error);
+      .catch(error => {
+        console.error('Error while capturing screenshot:', error);
       });
   };
+  
 
   return (
     <div className="board">
