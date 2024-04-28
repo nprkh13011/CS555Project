@@ -3,14 +3,6 @@ import axios from 'axios';
 import './Rankings.css';
 
 export default function Profiles({ Leaderboard }) {
-    return (
-        <div id="profile">
-            {Item(Leaderboard)}
-        </div>
-    )
-}
-
-function Item(data) {
     const [computedScores, setComputedScores] = useState([]);
 
     useEffect(() => {
@@ -19,28 +11,15 @@ function Item(data) {
                 const response = await axios.get('http://localhost:3001/professors');
                 const professorData = response.data;
 
-                console.log('Professor Data:', professorData); // Log the fetched professor data
-
-                const updatedScores = data.map((value, index) => {
-                const matchingProfessor = professorData.find(p => p.index === index);
-                console.log('Matching Professor:', matchingProfessor); // Log the matching professor
-                if (matchingProfessor) {
-                    const score =
-                      (matchingProfessor.trueResponses /
-                        matchingProfessor.totalTests) *
-                      100;
-                    console.log(`Calculated Score for ${value.name}: ${score}`); // Log the calculated score
-                    return score.toFixed(2);
-                } else {
-                    return value.score;
-                }
-            });
-
-                console.log('Updated Scores:', updatedScores); // Log the updated scores array
-
-                // Log individual scores before setting the state
-                updatedScores.forEach((score, index) => {
-                    console.log(`Score for ${data[index].name}: ${score}%`);
+                const updatedScores = Leaderboard.map((value, index) => {
+                    const matchingProfessor = professorData.find(p => p.index === index);
+                    if (matchingProfessor) {
+                        const score = (matchingProfessor.trueResponses / matchingProfessor.totalTests) * 100;
+                        console.log(`Calculated Score for ${value.name}: ${score}`);
+                        return score.toFixed(2);
+                    } else {
+                        return value.score;
+                    }
                 });
 
                 setComputedScores(updatedScores);
@@ -49,29 +28,45 @@ function Item(data) {
             }
         };
         
-        fetchComputedScores(); // Call the fetchComputedScores function
+        fetchComputedScores();
+    }, [Leaderboard]);
 
-    }, []); // Add a comma here
+    const computedScoresMap = {};
+    computedScores.forEach((score, index) => {
+        const professor = Leaderboard[index];
+        computedScoresMap[professor.name] = score;
+    });
+
+    const sortedProfiles = Leaderboard.slice().sort((a, b) => {
+        const scoreA = computedScoresMap[a.name];
+        const scoreB = computedScoresMap[b.name];
+        return scoreB - scoreA; // Sort in descending order
+    });
+
+
+
 
     return (
-        <>
-            {
-                data.map((value, index) => (
+        <div id="profile">
+            {sortedProfiles.map((profile, index) => {
+                const profileIndex = Leaderboard.findIndex(item => item.name === profile.name);
+                const computedScore = computedScores[profileIndex];
+                
+                return (
                     <div className="flex" key={index}>
                         <div className="item">
-                            <img src={value.img} alt="" />
-
+                            <img src={profile.img} alt="" />
                             <div className="info">
-                                <h3 className='name text-dark'>{value.name}</h3>
-                                <span>{value.location}</span>
+                                <h3 className='name text-dark'>{profile.name}</h3>
+                                <span>{profile.location}</span>
                             </div>
                         </div>
                         <div className="item">
-                            <span>{computedScores[index]}%</span>
+                            <span>{computedScore}%</span>
                         </div>
                     </div>
-                ))
-            }
-        </>
-    )
+                );
+            })}
+        </div>
+    );
 }
