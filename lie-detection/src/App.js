@@ -13,6 +13,7 @@ import Rankings from './components/Rankings.js';
 import ResultsPage from './components/Results.js';
 
 function App() {
+  const [resultsScores, setResultsScores] = useState(0);
   // const [results, setResults] = useState([])
 
   // useEffect(() => {
@@ -27,20 +28,26 @@ function App() {
   // }
 
   return (
-    <BrowserRouter >
+    <BrowserRouter>
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/lietest" element={<LieTest />} />
-        <Route path='/logout' element={<Logout />} />
-        <Route path='/home' element={<Home />} />
+        <Route
+          path="/lietest"
+          element={<LieTest setResultsScores={setResultsScores} />}
+        />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/" element={<About />} />
         <Route path="/instructions" element={<InstructionsPage />} />
         <Route path="/rankings" element={<Rankings />} />
-        <Route path="/results" element={<ResultsPage />} />
+        <Route
+          path="/results"
+          element={<ResultsPage resultsScores={resultsScores} />}
+        />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App;

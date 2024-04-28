@@ -25,7 +25,10 @@ function Item(data) {
                 const matchingProfessor = professorData.find(p => p.index === index);
                 console.log('Matching Professor:', matchingProfessor); // Log the matching professor
                 if (matchingProfessor) {
-                    const score = (matchingProfessor.trueResponses / matchingProfessor.totalTests) * 100;
+                    const score =
+                      (matchingProfessor.trueResponses /
+                        matchingProfessor.totalTests) *
+                      100;
                     console.log(`Calculated Score for ${value.name}: ${score}`); // Log the calculated score
                     return score.toFixed(2);
                 } else {
