@@ -11,6 +11,7 @@ const Home = () => {
             <div className="peach p-3 rounded w-50 h-70 text-center teal">
                 <img src={Logo} alt="FibFinders Logo" className="mb-3 rounded" style={{ maxWidth: "150px" }} />
             <h1>Welcome to FibFinders!</h1>
+            <h3>Select 'Start Test' to begin application</h3>
             <div className="mb-3">
             <button className="btn btn-primary rounded" onClick={() => navigate('/rankings')}>View Professor Ratings</button>
             </div>

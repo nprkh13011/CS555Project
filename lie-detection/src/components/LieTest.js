@@ -145,7 +145,7 @@ const LieTest = (props) => {
         </div>
         <div className="white-container p-3 m-2 rounded text-center">
           <h1 className="lietest">
-            Have you taken a class with this professor?
+          Would you recommend the class with the professor?
           </h1>
           <div className="image-container my-4">
             <img src={imgList[index]} alt={`Professor ${index + 1}`} />
